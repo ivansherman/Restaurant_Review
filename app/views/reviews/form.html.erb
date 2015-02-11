@@ -1,0 +1,16 @@
+<%= form_for [ @restaurant, @review ] do |f| %>
+	<p>
+		<%= f.label :user_id, "User name" %>
+		<%= f.select :user_id, @users.collect{|user| [user.name, user.id]} %>
+	</p>
+	<p>
+		<%= f.label :comment %><br>
+		<%= f.text_area :comment %>
+	</p>
+	<p>
+		<%= f.label :rating %>
+		<%= f.select :rating, options_for_select([["1 (lowest)", 1], 2,3,4,5]) %>
+	<p>
+		<%= f.submit %>
+	</p>
+<% end %>

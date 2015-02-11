@@ -1,0 +1,26 @@
+<h1><%= @restaurant.name %></h1>
+	 Address: <%= @restaurant.address %><br>
+   Phone: <%= @restaurant.phone %>
+
+<br>
+<br>
+
+<h2>Reviews</h2>
+	<% @restaurant.reviews.order(created_at: :desc).each do |review| %>
+	 <p class="recommendation" <% if review.recommendation %>><strong>Rating:</strong> <%= review.rating %></P>
+   <p><strong>Comment:</strong> <%= review.comment %></P>
+   <p><strong>Posted by:</strong> <%= review.user.name %> <%= time_ago_in_words review.created_at %> ago</p>
+   <% if review.recommendation? %>
+   <strong>RECOMMENDED!</strong><br>
+   <br>
+   <% end %>
+ <% end %>
+<% end %>
+
+<br>
+
+<section>
+<h2>Add a review</h2>
+<%= render 'reviews/form' %>
+</section>
+

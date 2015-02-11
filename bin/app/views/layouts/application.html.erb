@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RestaurantReview</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <% if session[:user_id] %>
+	 <%= form_tag '/logout', method: :delete do %>
+    <%= submit_tag 'Logout' %>
+    <% end %>
+    <% else %>
+    <%= link_to 'Signup', signup_path %> or <%= link_to "Log in", login_path %>
+    <% end %>
+
+	<div class='container'>
+    <% if flash[:notice] %>
+        <p id="notice"><%= flash[:notice] %></p>
+        <% elsif flash[:alert] %>
+        <p id="alert"><%= flash[:alert] %></p>
+    <% end %>
+		<%= yield %>
+	</div>
+
+</body>
+
+<footer class="footer">
+      <div class="container-footer">
+        <p class="text-muted">Restaurant review app &copy; <%= Date.today.year %></p>
+      </div>
+    </footer>
+</html>

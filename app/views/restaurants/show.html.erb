@@ -1,0 +1,21 @@
+<h1><%= @restaurant.name %></h1>
+Address: <%= @restaurant.address %><br>
+Phone: <%= @restaurant.phone %>
+
+<br>
+<br>
+
+<h2>Reviews</h2>
+<% @restaurant.reviews.each do |review| %></br>
+Rating: <%= review.rating %></br>
+Comment: <%= review.comment %></br>
+Posted by: <%= review.user.name %> at <%= time_ago_in_words review.created_at %> ago</br>
+-----------------------------------
+<% end %>
+
+<br>
+
+<h2>Add a review</h2>
+<%= render 'reviews/form' %>
+
+<%= link_to 'Back', root_path %>

@@ -1,0 +1,11 @@
+<h1>Restaurants in Orlando</h1>
+
+<p>Here are places I've eaten in the greater Orlando area.</p>
+
+<ul>
+	<% @restaurants.each do |restaurant| %>
+		<li><%= link_to restaurant.name, restaurant %></li>
+	<% end %>
+</ul>
+
+<%= link_to 'Add a new restaurant', new_restaurant_path %>
