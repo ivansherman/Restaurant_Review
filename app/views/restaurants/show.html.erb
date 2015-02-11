@@ -4,18 +4,23 @@ Phone: <%= @restaurant.phone %>
 
 <br>
 <br>
+<br>
 
-<h2>Reviews</h2>
-<% @restaurant.reviews.each do |review| %></br>
-Rating: <%= review.rating %></br>
-Comment: <%= review.comment %></br>
-Posted by: <%= review.user.name %> at <%= time_ago_in_words review.created_at %> ago</br>
------------------------------------
-<% end %>
+<section>
+	<h2>Reviews</h2>
+		<%= render @restaurant.reviews.order(created_at: :desc) %>
+</section>
 
 <br>
 
-<h2>Add a review</h2>
-<%= render 'reviews/form' %>
+<section>
+	<% if session[:user_id] %>
+		<%= render 'reviews/form' %>
+	<% else %>
+		<p><%= link_to 'Log in here', login_path %> to leave a review </p>
+	<% end %>
+</section>
+
+<br>
 
 <%= link_to 'Back', root_path %>

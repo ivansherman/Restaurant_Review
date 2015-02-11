@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :restaurants
   resources :restaurants do
     resources :reviews
   end
@@ -8,15 +7,21 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
-  root 'restaurants#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+   root 'restaurants#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
+
+  get 'login' => 'sessions#new'
+  post 'login' => 'sessions#create'
+  delete 'logout' => 'sessions#destroy'
+
+
+  get 'signup' => 'users#new'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

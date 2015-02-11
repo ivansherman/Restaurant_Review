@@ -1,19 +1,22 @@
-<h1> Add a Restaurant<h1>
+<h1>Add a Restaurant</h1>
 
-<%= form_for @restaurants do |f| %>
-	<%= f.label :name %>
-	<%= f.text_field :name %>
-	<br/>
-	<%= f.label :address %>
-	<%= f.text_area :address %>
-	<br/>
-	<%= f.label :address %>
-	<%= f.text_area :address %>
-	<br/>
-	<%= f.label :phone, 'Phone number' %>
-	<%= f.telephone_field :phone %>
-	<br/> 
-	<%= f.submit 'Submit' %>
+	<%= form_for @restaurants do |f| %>
+		
+		<fieldset>	
+			<legend>Add a Restaurant</legend>
+				<%= f.label :name %>
+				<%= f.text_field :name %> </br>
 
-<% end %> 
 
+				<%= f.label :address %>
+				<%= f.text_area :address %> </br>
+
+				<%= f.label :phone, 'Phone number' %>
+				<%= f.telephone_field :phone, placeholder: "(555) 555-5555" %> </br>
+				<%= f.submit 'Submit' %>
+		</fieldset>		
+		
+	<% end %>
+	<br>
+	<%= link_to 'Back', root_path %>
+	

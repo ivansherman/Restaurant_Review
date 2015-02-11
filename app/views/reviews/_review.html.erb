@@ -1,0 +1,29 @@
+
+<article>
+	<p <%= 'class=recommended' if review.recommend? %>>
+		<strong>Rating:</strong>
+		<%= review.rating %>
+	</p>
+	
+	<% if review.recommend? %>
+	<p>
+		RECOMMENDED!
+	</p>
+	<% end %>
+
+	<p>
+		<strong>Comment:</strong>
+		<%= review.comment %>
+	</p>
+
+	<p>
+		<strong>Post by:</strong>
+		<%= review.user.name %> at <%= time_ago_in_words review.created_at %> ago
+	</p>
+
+	<p>
+	  <%= link_to 'Delete', [review.restaurant, review],
+	               method: :delete,
+	               data: { confirm: 'Are you sure?' } %>
+	</p>
+</article>

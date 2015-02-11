@@ -1,10 +1,6 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+
 restaurants = [{ 
   name: 'Super Rico Colombian Bistro',
   price: 1,
@@ -21,6 +17,7 @@ Orlando, FL 32801',
 Orlando, FL 32801',
   phone: '(407) 481-2928',
   },
+  {
   name: 'Latin Square Cuisine',
   price: 1,
   food: 'Latin American',
@@ -30,9 +27,21 @@ Orlando, FL 32801',
   },
   {
   name: 'Ceviche Tapas Bar & Restaurant',
-  price: 1,
+  price: 2,
   food: 'Tapas',
   address: '125 W Church St
 Orlando, FL 32801',
   phone: '(321) 281-8140'
   }]
+
+  Restaurant.delete_all
+  
+  restaurants.each do |restaurant| 
+  	latest = Restaurant.create(restaurant)
+  	puts "created #{latest.name}"
+  end
+
+  5.times do |n| 
+  	user = User.create(name: "User #{n}", email: "user_#{n}@example.com")
+  	puts "created #{user.name}"
+  end

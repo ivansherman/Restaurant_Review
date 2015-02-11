@@ -1,11 +1,21 @@
-<h1>Restaurants in Orlando</h1>
+<h1>Guide to the Best Restaurants in Orlando</h1>
 
-<p>Here are places I've eaten in the greater Orlando area.</p>
+<p>Here are places I've eaten in the greater Orlando area, and enjoyed and/or gotten food poisoning from.</p>
 
-<ul>
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Address</th>
+		<th># of Reviews</th>
+	</tr>
 	<% @restaurants.each do |restaurant| %>
-		<li><%= link_to restaurant.name, restaurant %></li>
+		<tr>
+			<td><%= link_to restaurant.name, restaurant %></td>
+			<td><%= restaurant.address %></td>
+			<td><%= restaurant.reviews.length %></td>
+		</tr>	
 	<% end %>
-</ul>
-
-<%= link_to 'Add a new restaurant', new_restaurant_path %>
+</table>
+<br>
+<br>
+<%= link_to 'Add a new restaurant', new_restaurant_path  %>
